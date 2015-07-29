@@ -1,10 +1,11 @@
 package com.ztl.dwin.ui;
 
+import com.ztl.dwin.R;
+
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import com.ztl.dwin.R;
 /**
  * 治疗屏界面
  * @author tianliang.zhou
@@ -23,11 +24,13 @@ public class TreatActivity extends BaseActivity implements OnClickListener{
 	private Button btn_fluence_reduce;//fluence减按钮
 	private Button btn_tem_add;//temperature加按钮
 	private Button btn_tem_reduce;//temperature减按钮
+	private Button btn_ready;//待命或者准备
 	private int temperature = 0;
 	private int widht_step = 1;//width的步长
 	private int fluence_step = 1;//fluence的步长
 	private int fluence = 5;
 	private int width = 5;
+	 
 	
 	@Override
 	protected void initView() {
@@ -43,6 +46,7 @@ public class TreatActivity extends BaseActivity implements OnClickListener{
 		btn_fluence_reduce = (Button) findViewById(R.id.btn_fluence_reduce);
 		btn_tem_add = (Button) findViewById(R.id.btn_tem_add);
 		btn_tem_reduce = (Button) findViewById(R.id.btn_tem_reduce);
+		btn_ready = (Button) findViewById(R.id.btn_ready);
 	}
 
 	@Override
@@ -58,6 +62,7 @@ public class TreatActivity extends BaseActivity implements OnClickListener{
 		btn_fluence_reduce.setOnClickListener(this);
 		btn_tem_add.setOnClickListener(this);
 		btn_tem_reduce.setOnClickListener(this);
+		btn_ready.setOnClickListener(this);
 		
 	}
 
@@ -124,6 +129,8 @@ public class TreatActivity extends BaseActivity implements OnClickListener{
 			if(temperature > 0){//当前温度高于0摄氏度
 				temperature -= 5;
 			}			
+			break;
+		case R.id.btn_ready:
 			break;
 		default:
 			break;
