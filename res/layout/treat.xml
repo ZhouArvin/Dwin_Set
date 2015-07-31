@@ -81,6 +81,7 @@
                 android:paddingTop="15dp" >
 
                 <Button
+                    android:id="@+id/btn_cure_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/cure_count"
@@ -94,8 +95,7 @@
                     android:background="@drawable/bg_shape"
                     android:paddingBottom="10dp"
                     android:gravity="center"
-                    android:paddingTop="10dp"
-                    android:text="1234" 
+                    android:paddingTop="10dp" 
                     android:textColor="@android:color/black"/>
             </LinearLayout>
 
@@ -195,7 +195,6 @@
                             android:layout_toLeftOf="@id/tv_width_ms"
                             android:layout_toRightOf="@id/iv_width"
                             android:gravity="center"
-                            android:text="10"
                             android:textColor="@android:color/black"
                             android:textSize="22sp" />
                     </RelativeLayout>
@@ -285,7 +284,6 @@
                             android:layout_toLeftOf="@id/tv_repeat_s"
                             android:layout_toRightOf="@id/iv_repeat"
                             android:gravity="center"
-                            android:text="10"
                             android:textColor="@android:color/black"
                             android:textSize="22sp" />
                     </RelativeLayout>
@@ -385,7 +383,6 @@
                         android:layout_alignTop="@id/iv_vertical_line1"
                         android:layout_toLeftOf="@id/iv_vertical_line1"
                         android:gravity="center"
-                        android:text="10 "
                         android:textSize="20sp" 
                         android:textColor="@android:color/black"/>
 
@@ -484,6 +481,7 @@
                         android:background="#333333"
                         android:contentDescription="@string/app_name" />
 
+                    <!-- 温度计展示 -->
                     <RelativeLayout
                         android:id="@+id/linearlayout_temp_num"
                         android:layout_width="match_parent"
@@ -622,6 +620,7 @@
         </LinearLayout>
     </LinearLayout>
 
+    <!-- 保存、设置按钮 -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -642,6 +641,7 @@
             android:background="@drawable/system" />
     </LinearLayout>
 
+    <!-- ready按钮 -->
     <Button
         android:id="@+id/btn_ready"
         android:layout_width="wrap_content"
