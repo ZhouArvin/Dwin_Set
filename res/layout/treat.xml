@@ -166,11 +166,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_above="@id/linearLayout_width_add_reduce"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="20dp"
                             android:layout_marginLeft="40dp"
                             android:layout_marginTop="50dp"
                             android:contentDescription="@string/app_name"
-                            android:src="@drawable/width" />
+                            android:scaleType="fitXY"
+                            android:src="@drawable/width"
+                            android:adjustViewBounds="true" />
 
                         <TextView
                             android:id="@+id/tv_width_ms"
@@ -258,8 +260,11 @@
                             android:layout_above="@id/linearlayout_repeat_add_reduce"
                             android:layout_marginLeft="40dp"
                             android:layout_marginTop="40dp"
+                            android:layout_marginBottom="20dp"
                             android:contentDescription="@string/app_name"
-                            android:src="@drawable/repeat" />
+                            android:scaleType="fitXY"
+                            android:src="@drawable/repeat"
+                            android:adjustViewBounds="true" />
 
                         <TextView
                             android:id="@+id/tv_repeat_s"
@@ -318,7 +323,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical" >
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/relativelayout_fluence"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -326,21 +331,53 @@
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp"
                     android:layout_marginTop="50dp"
+                    android:orientation="horizontal"
                     android:background="@drawable/bg_shape" >
 
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2" >
+
+                        <TextView
+                            android:id="@+id/tv_fluence"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/tv_fluence"
+                            android:layout_alignRight="@id/tv_fluence"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginRight="10dp"
+                            android:text="J/cm2"
+                            android:textSize = "20sp"
+                            android:textColor="@android:color/black" />
+                    </RelativeLayout>
+                    
+                    <View
+                        android:id="@+id/iv_vertical_line1"
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="#333333" />
+                    
                     <!-- fluence的加减按钮 -->
 
                     <LinearLayout
                         android:id="@+id/linearlayout_fluence_add_reduce"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"                        
                         android:orientation="vertical"
+                        android:layout_weight="1"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp" >
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -354,7 +391,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
@@ -366,36 +403,8 @@
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/reduce_selector" />
                         </LinearLayout>
-                    </LinearLayout>
-
-                    <View
-                        android:id="@+id/iv_vertical_line1"
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:layout_toLeftOf="@id/linearlayout_fluence_add_reduce"
-                        android:background="#333333" />
-
-                    <TextView
-                        android:id="@+id/tv_fluence"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/iv_vertical_line1"
-                        android:layout_alignTop="@id/iv_vertical_line1"
-                        android:layout_toLeftOf="@id/iv_vertical_line1"
-                        android:gravity="center"
-                        android:textSize="20sp" 
-                        android:textColor="@android:color/black"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/tv_fluence"
-                        android:layout_alignRight="@id/tv_fluence"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginRight="10dp"
-                        android:text="J/cm2"
-                        android:textColor="@android:color/black" />
-                </RelativeLayout>
+                    </LinearLayout>                                       
+               </LinearLayout>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -423,83 +432,36 @@
                 android:layout_weight="1"
                 android:orientation="vertical" >
 
-                <RelativeLayout
-                    android:id="@+id/relativelayout_temperature"
+                <LinearLayout
+                    android:id="@+id/linearlayout_temperature"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="40dp"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp"
                     android:layout_marginTop="50dp"
+                    android:orientation="horizontal"
                     android:background="@drawable/bg_shape" >
-
-                    <!-- temperature的加减按钮 -->
-
-                    <LinearLayout
-                        android:id="@+id/relativelayout_tem_add_reduce"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
-                        android:orientation="vertical"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp" >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical" >
-
-                            <Button
-                                android:id="@+id/btn_tem_add"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/add_selector" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical" >
-
-                            <Button
-                                android:id="@+id/btn_tem_reduce"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/reduce_selector" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <View
-                        android:id="@+id/iv_vertical_line2"
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:layout_toLeftOf="@id/relativelayout_tem_add_reduce"
-                        android:background="#333333"
-                        android:contentDescription="@string/app_name" />
-
-                    <!-- 温度计展示 -->
+                    
+                     <!-- 温度计展示 -->
                     <RelativeLayout
-                        android:id="@+id/linearlayout_temp_num"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@id/iv_vertical_line2"
-                        android:layout_alignTop="@id/iv_vertical_line2"
-                        android:layout_marginLeft="10dp"
-                        android:layout_toLeftOf="@id/iv_vertical_line2"
-                        android:orientation="vertical" >
+                        android:id="@+id/relativelayout_temp_num"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        >
 
                         <ImageView
                             android:id="@+id/iv_temp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
+                            android:layout_marginTop="50dp"
+                            android:layout_marginBottom="10dp"
                             android:contentDescription="@string/app_name"
-                            android:src="@drawable/temp_zero" />
+                            android:src="@drawable/temp_zero"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true" />
 
                         <RelativeLayout
                             android:id="@+id/relativelayout_num"
@@ -607,7 +569,52 @@
                                 android:textSize="18sp" />
                         </RelativeLayout>
                     </RelativeLayout>
-                </RelativeLayout>
+                    
+                    <View
+                        android:id="@+id/iv_vertical_line2"
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="#333333"
+                        android:contentDescription="@string/app_name" />
+
+                    <!-- temperature的加减按钮 -->
+
+                    <LinearLayout
+                        android:id="@+id/linearlayout_tem_add_reduce"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <Button
+                                android:id="@+id/btn_tem_add"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/add_selector" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <Button
+                                android:id="@+id/btn_tem_reduce"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/reduce_selector" />
+                        </LinearLayout>
+                    </LinearLayout>                   
+                </LinearLayout>
 
                 <ImageView
                     android:layout_width="wrap_content"
