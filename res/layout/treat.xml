@@ -96,6 +96,7 @@
                     android:paddingBottom="10dp"
                     android:gravity="center"
                     android:paddingTop="10dp" 
+                    android:textSize="24sp"
                     android:textColor="@android:color/black"/>
             </LinearLayout>
 
@@ -181,24 +182,25 @@
                             android:layout_alignBottom="@id/iv_width"
                             android:layout_alignParentRight="true"
                             android:layout_alignTop="@id/iv_width"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginRight="40dp"
                             android:gravity="center"
                             android:text="ms"
                             android:textColor="@android:color/black"
-                            android:textSize="22sp" />
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tv_width_num"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@id/iv_width"
                             android:layout_alignTop="@id/iv_width"
-                            android:layout_marginRight="10dp"
                             android:layout_toLeftOf="@id/tv_width_ms"
                             android:layout_toRightOf="@id/iv_width"
                             android:gravity="center"
                             android:textColor="@android:color/black"
-                            android:textSize="22sp" />
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
                     </RelativeLayout>
 
                     <ImageView
@@ -273,24 +275,25 @@
                             android:layout_alignBottom="@id/iv_repeat"
                             android:layout_alignParentRight="true"
                             android:layout_alignTop="@id/iv_repeat"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginRight="40dp"
                             android:gravity="center"
                             android:text="S"
+                            android:textStyle="bold"
                             android:textColor="@android:color/black"
-                            android:textSize="22sp" />
+                            android:textSize="30sp" />
 
                         <TextView
                             android:id="@+id/tv_repeat_num"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@id/iv_repeat"
                             android:layout_alignTop="@id/iv_repeat"
-                            android:layout_marginRight="10dp"
                             android:layout_toLeftOf="@id/tv_repeat_s"
                             android:layout_toRightOf="@id/iv_repeat"
                             android:gravity="center"
                             android:textColor="@android:color/black"
-                            android:textSize="22sp" />
+                            android:textSize="30sp" 
+                            android:textStyle="bold"/>
                     </RelativeLayout>
 
                     <ImageView
@@ -345,7 +348,8 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:textColor="@android:color/black"
-                            android:textSize="20sp" />
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -354,8 +358,9 @@
                             android:layout_alignRight="@id/tv_fluence"
                             android:layout_marginBottom="10dp"
                             android:layout_marginRight="10dp"
-                            android:text="J/cm2"
-                            android:textSize = "20sp"
+                            android:text="J/cm²"
+                            android:textSize = "30sp"
+                            android:textStyle="bold"
                             android:textColor="@android:color/black" />
                     </RelativeLayout>
                     
@@ -478,7 +483,8 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="10"
                                 android:textColor="@android:color/black"
-                                android:textSize="18sp" />
+                                android:textSize="24sp"
+                                />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -487,7 +493,8 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="0"
                                 android:textColor="@android:color/black"
-                                android:textSize="18sp" />
+                                android:textSize="24sp" 
+                                />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -496,77 +503,43 @@
                                 android:layout_centerInParent="true"
                                 android:text="5"
                                 android:textColor="@android:color/black"
-                                android:textSize="18sp" />
+                                android:textSize="24sp"
+                                />
                         </RelativeLayout>
-
-                        <LinearLayout
-                            android:id="@+id/linearLayout_o"
+                       
+                        <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@id/relativelayout_num"
                             android:layout_alignTop="@id/relativelayout_num"
-                            android:layout_marginLeft="15dp"
-                            android:layout_toRightOf="@id/relativelayout_num"
-                            android:orientation="vertical" >
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:text="o"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:text="o"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:text="o"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@id/linearLayout_o"
-                            android:layout_alignTop="@id/linearLayout_o"
                             android:layout_marginLeft="5dp"
-                            android:layout_toRightOf="@id/linearLayout_o" >
+                            android:layout_toRightOf="@id/relativelayout_num" >
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
-                                android:text="C"
+                                android:text="℃"
                                 android:textColor="@android:color/black"
-                                android:textSize="18sp" />
+                                android:textSize="24sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
                                 android:layout_centerHorizontal="true"
-                                android:text="C"
+                                android:text="℃"
                                 android:textColor="@android:color/black"
-                                android:textSize="18sp" />
+                                android:textSize="24sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerInParent="true"
-                                android:text="C"
+                                android:text="℃"
                                 android:textColor="@android:color/black"
-                                android:textSize="18sp" />
+                                android:textSize="24sp" />
                         </RelativeLayout>
                     </RelativeLayout>
                     
