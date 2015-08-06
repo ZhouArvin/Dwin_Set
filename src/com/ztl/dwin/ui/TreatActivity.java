@@ -57,6 +57,7 @@ public class TreatActivity extends BaseActivity implements OnClickListener,
 	private final int FLAG_FLUCENCE_REDUCE = 4;
 	private Timer timer;
 	private MyTimerTask task;
+	private TextView tv_repeat_s;
 	
 	private Handler mHandler = new Handler(){
 
@@ -134,6 +135,7 @@ public class TreatActivity extends BaseActivity implements OnClickListener,
 		tv_repeat_num = (TextView) findViewById(R.id.tv_repeat_num);
 		tv_width_num = (TextView) findViewById(R.id.tv_width_num);
 		tv_fluence = (TextView) findViewById(R.id.tv_fluence);
+		tv_repeat_s = (TextView) findViewById(R.id.tv_repeat_s);
 	}
 		
 
@@ -255,8 +257,10 @@ public class TreatActivity extends BaseActivity implements OnClickListener,
 	private void setRepeatText() {
 		if (repeat_num != 0) {
 			tv_repeat_num.setText(String.valueOf(repeat_num));
+			tv_repeat_s.setVisibility(View.INVISIBLE);
 		} else {
 			tv_repeat_num.setText("OFF");
+			tv_repeat_s.setVisibility(View.INVISIBLE);
 		}
 	}
 
@@ -291,7 +295,7 @@ public class TreatActivity extends BaseActivity implements OnClickListener,
 		case MotionEvent.ACTION_DOWN:
 			if(task == null){
 				task = new MyTimerTask(flag);
-				timer.schedule(task, 0l, 500l);
+				timer.schedule(task, 0l, 100l);
 			}
 			break;
 		case MotionEvent.ACTION_CANCEL:				

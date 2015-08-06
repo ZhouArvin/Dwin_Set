@@ -4,5 +4,6 @@
     <string name="app_name">Dwin_Set</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="choose_type_inform">please select mode</string>
 
 </resources>
