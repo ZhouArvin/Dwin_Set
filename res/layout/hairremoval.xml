@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hair_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/kuang_bg"
+        android:paddingTop="30dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="30dp" >
+        <TextView
+            android:id="@+id/tv_current_function"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"                        
+            android:textSize="30sp"
+            android:textColor="#021367"/>
+        <TextView
+            android:id="@+id/tv_current_density"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="#021367"
+            android:layout_marginLeft="50dp"/>
+        <TextView
+            android:id="@+id/tv_current_pulswidth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="#021367"
+            android:layout_marginLeft="50dp"/>
+        <TextView
+            android:id="@+id/tv_current_frequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="#021367"
+            android:layout_marginLeft="50dp"/>
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_weight="1"
+        android:columnCount="6"
+        android:rowCount="11" >
+
+        <!-- 第一行 -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_column="0"
+            android:layout_columnSpan="6"
+            android:layout_gravity="fill"
+            android:layout_row="0" />
+        <!-- 第二行 -->
+
+        <Button
+            android:id="@+id/btn_function"
+            android:layout_gravity="right"
+            android:background="@drawable/btn_function_selector"
+            android:onClick="onClick" />
+
+        <Space
+            android:layout_column="2"
+            android:layout_gravity="fill"
+            android:layout_row="1" />
+        
+        <ImageView
+            android:id="@+id/iv_function"
+            android:layout_column="1"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginLeft="20dp"
+            android:layout_row="1"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/hr"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:background="@drawable/kuang_bg" />
+
+        <ImageView
+            android:id="@+id/iv_hrpc"
+            android:layout_rowSpan="3"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/hrpic" 
+            android:paddingTop="1dp"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/kuang_bg"/>
+
+        <Space
+            android:layout_column="4"
+            android:layout_columnSpan="2"
+            android:layout_row="1"
+            android:layout_rowSpan="3" />
+        <!-- 第三行 -->
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_row="2" />
+        <!-- 第四行 -->
+
+        <Button
+            android:id="@+id/btn_mode"
+            android:layout_column="0"
+            android:layout_gravity="right"
+            android:layout_row="3"
+            android:onClick="onClick"
+            android:background="@drawable/btn_mode_selector" />
+
+        <ImageView
+            android:id="@+id/iv_mode"
+            android:layout_marginLeft="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/repeat_mode" 
+            android:background="@drawable/kuang_bg"/>
+
+        <Space
+            android:layout_column="2"
+            android:layout_gravity="fill"
+            android:layout_row="3" />
+        <!-- 第五行 -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_column="0"
+            android:layout_columnSpan="6"
+            android:layout_gravity="fill"
+            android:layout_row="4" />
+        <!-- 第六行 -->
+
+        <Button
+            android:id="@+id/btn_cooling"
+            android:layout_gravity="right"
+            android:onClick="onClick"
+            android:background="@drawable/btn_cooling_selector" />
+
+        <TextView
+            android:id="@+id/tv_cooling"
+            android:layout_gravity="center"
+            android:text="℃2.2"
+            android:textSize="50sp"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:textColor="@android:color/black" 
+            android:background="@drawable/kuang_bg"/>
+
+        <ImageView
+            android:id="@+id/iv_snow"
+            android:layout_column="2"
+            android:layout_row="5"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/snow" />
+
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_rowSpan="2"
+            android:layout_gravity="fill"
+            android:orientation="horizontal"
+            android:paddingTop="1dp"
+            android:background="@drawable/kuang_bg"
+            android:layout_marginLeft="50dp">
+            <ImageView android:id="@+id/iv_num1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:scaleType="fitEnd"
+                android:contentDescription="@string/app_name"                                             
+                />
+            <ImageView android:id="@+id/iv_num2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:scaleType="fitStart"
+                android:contentDescription="@string/app_name"
+                android:layout_gravity="center_horizontal"
+                />
+        </LinearLayout>
+        <!-- 第7行 -->
+
+        <Space
+             android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_gravity="fill"
+            android:layout_row="6" />
+
+        <TextView
+            android:layout_column="4"
+            android:layout_row="6"
+            android:text="J/cm²"
+            android:textSize="40sp"
+            android:textColor="@android:color/black" />
+        <!-- 第8行 -->
+
+        <Button
+            android:id="@+id/btn_counter"
+            android:layout_column="0"
+            android:layout_gravity="right"
+            android:layout_row="7"
+            android:onClick="onClick"
+            android:background="@drawable/btn_counter_selector" />
+
+        <TextView
+            android:id="@+id/tv_counter"
+            android:layout_gravity="center"
+            android:text="1234"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/kuang_bg"
+            android:textSize="50sp" />
+
+        <Space
+            android:layout_column="2"
+            android:layout_gravity="fill"
+            android:layout_row="7" />
+
+        <Button 
+            android:id="@+id/btn_energy"
+            android:onClick="onClick"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/btn_energy_selector"
+            android:layout_gravity="center" />
+
+        <Space
+            android:layout_column="4"
+            android:layout_gravity="fill"
+            android:layout_row="7" />
+
+        <Button 
+            android:id="@+id/btn_tool"
+            android:onClick="onClick"
+            android:background="@drawable/btn_tool_selector" 
+            android:layout_gravity="right"/>
+        <!-- 第9行 -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_column="0"
+            android:layout_columnSpan="6"
+            android:layout_gravity="fill"
+            android:layout_row="8" />
+        <!-- 第十行 -->
+
+        <Button
+            android:id="@+id/btn_exit"
+            android:onClick="onClick"
+            android:background="@drawable/btn_exit_selector"
+            android:layout_gravity="bottom" />
+
+        <Space
+            android:layout_column="1"
+            android:layout_gravity="fill"
+            android:layout_row="9" />
+
+        <Button 
+            android:id="@+id/btn_add"
+            android:background="@drawable/btn_add_selector" 
+            android:layout_gravity="bottom"
+            android:onClick="onClick"/>
+
+        <Button 
+            android:id="@+id/btn_reduce"
+            android:onClick="onClick"
+            android:background="@drawable/btn_reduce_selector"
+            android:layout_gravity="bottom|center_horizontal" />
+
+        <Space
+            android:layout_column="4"
+            android:layout_gravity="fill"
+            android:layout_row="9" />
+
+        <Button 
+            android:id="@+id/btn_ready"
+            android:background="@drawable/hair_standby" 
+            android:layout_gravity="right"
+            android:onClick="onClick"/>
+        <!-- 第11行 -->
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_column="0"
+            android:layout_row="10" 
+            android:layout_columnSpan="6"
+            android:layout_gravity="fill"
+            />
+    
+    </GridLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bottom_bg"
+        android:layout_marginBottom="15dp" >
+
+        <ImageView
+            android:id="@+id/iv_charge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"/>
+        
+        <TextView
+            android:id="@+id/tv_coolant" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="60sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"></TextView>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -5,5 +5,10 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="choose_type_inform">please select mode</string>
-
+    <string name="temperature_num">%1$s℃</string>
+    <string name="current_function">%1$s:</string>
+    <string name="current_density">Energy density %1$sJ/cm²</string>
+    <string name="current_pluswidth">Pulsewidth %1$smS</string>
+    <string name="currrent_frequency">Frequency %1$sHz</string>
+    <string name="coolant"><![CDATA[<font color="#2c3d59">COOLANT</font><font color="#060682">%1$s</font><font color="#2c3d59">℃</font>]]></string>
 </resources>

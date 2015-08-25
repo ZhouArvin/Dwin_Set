@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="numResArray">
+        <item>@drawable/zero</item>
+        <item>@drawable/one</item>
+        <item>@drawable/two</item>
+        <item>@drawable/three</item>
+        <item>@drawable/four</item>
+        <item>@drawable/five</item>
+        <item>@drawable/six</item>
+        <item>@drawable/seven</item>
+        <item>@drawable/eight</item>
+        <item>@drawable/nine</item>
+    </integer-array>
+    
+    <integer-array name="functionResArray">
+        <item>@drawable/ac</item>
+        <item>@drawable/hr</item>
+        <item>@drawable/hr_add</item>
+        <item>@drawable/sr</item>
+        <item>@drawable/shr</item>        
+    </integer-array>
+    
+    <integer-array name="modeResArray">
+        <item>@drawable/single_mode</item>
+        <item>@drawable/repeat_mode</item>            
+    </integer-array>
+    
+</resources>

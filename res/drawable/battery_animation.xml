@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:maxLevel="4">
+        <animation-list android:oneshot="false">
+            <item android:duration="500" android:drawable="@drawable/charge0"></item>
+            <item android:duration="500" android:drawable="@drawable/charge1"></item>
+            <item android:duration="500" android:drawable="@drawable/charge2"></item>
+            <item android:duration="500" android:drawable="@drawable/charge3"></item>
+            <item android:duration="500" android:drawable="@drawable/charge4"></item>
+            <item android:duration="500" android:drawable="@drawable/charge5"></item>
+        </animation-list>
+    </item>
+    <item android:maxLevel="29" >
+        <animation-list android:oneshot="false">
+            <item android:duration="500" android:drawable="@drawable/charge1"></item>
+            <item android:duration="500" android:drawable="@drawable/charge2"></item>
+            <item android:duration="500" android:drawable="@drawable/charge3"></item>
+            <item android:duration="500" android:drawable="@drawable/charge4"></item>
+            <item android:duration="500" android:drawable="@drawable/charge5"></item>
+        </animation-list>
+    </item>
+    <item android:maxLevel="49" >
+        <animation-list android:oneshot="false">
+            <item android:duration="500" android:drawable="@drawable/charge2"></item>
+            <item android:duration="500" android:drawable="@drawable/charge3"></item>
+            <item android:duration="500" android:drawable="@drawable/charge4"></item>
+            <item android:duration="500" android:drawable="@drawable/charge5"></item>
+        </animation-list>
+    </item>
+    <item android:maxLevel="69" >
+        <animation-list android:oneshot="false">
+            <item android:duration="500" android:drawable="@drawable/charge3"></item>
+            <item android:duration="500" android:drawable="@drawable/charge4"></item>
+            <item android:duration="500" android:drawable="@drawable/charge5"></item>
+        </animation-list>
+    </item>
+    <item android:maxLevel="89" >
+        <animation-list android:oneshot="false">
+            <item android:duration="500" android:drawable="@drawable/charge4"></item>
+            <item android:duration="500" android:drawable="@drawable/charge5"></item>
+        </animation-list>
+    </item>
+    <item android:drawable="@drawable/charge5" android:maxLevel="100" >
+    </item>
+</level-list>

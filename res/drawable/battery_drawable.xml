@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="@drawable/charge0" android:maxLevel="4">        
+    </item>
+    <item android:drawable="@drawable/charge1" android:maxLevel="29" >        
+    </item>
+    <item android:drawable="@drawable/charge2" android:maxLevel="49" >       
+    </item>
+    <item android:drawable="@drawable/charge3" android:maxLevel="69" >        
+    </item>
+    <item android:drawable="@drawable/charge4" android:maxLevel="89" >       
+    </item>
+    <item android:drawable="@drawable/charge5" android:maxLevel="100" >
+    </item>
+</level-list>
+    
+
+

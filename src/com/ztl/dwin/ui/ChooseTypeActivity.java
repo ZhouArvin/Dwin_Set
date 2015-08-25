@@ -46,7 +46,7 @@ public class ChooseTypeActivity extends BaseActivity implements OnClickListener{
 			startActivity(new Intent(ChooseTypeActivity.this, TreatActivity.class));
 			break;
 		case R.id.btn_hair://µã»÷hair°´Å¥
-			
+			startActivity(new Intent(ChooseTypeActivity.this, HairRemovalActivity.class));
 			break;
 		default:
 			break;
