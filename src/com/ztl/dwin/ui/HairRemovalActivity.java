@@ -107,7 +107,7 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 		tv_current_function = (TextView) findViewById(R.id.tv_current_function);
 		tv_current_density = (TextView) findViewById(R.id.tv_current_density);
 		tv_current_pulswidth = (TextView) findViewById(R.id.tv_current_pulswidth);
-		tv_current_density = (TextView) findViewById(R.id.tv_current_density);
+		tv_current_frequency = (TextView) findViewById(R.id.tv_current_frequency);
 		tv_coolant = (TextView) findViewById(R.id.tv_coolant);
 		iv_charge = (ImageView) findViewById(R.id.iv_charge);
 	}
