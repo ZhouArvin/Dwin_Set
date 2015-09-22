@@ -37,17 +37,19 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 	private int[] functionResIds;
 	private int[] modeResIds;	
 	private int[] numResIds;
+	private int[] fuctionMotionResIds;
 	private int functionResIndex = -1;
 	private int modeResIndex = -1;
 	private ImageView iv_fuction; 
+	private ImageView iv_hrpc;//功能示意图片展示
 	private ImageView iv_mode;
 	private final int READY = 0;// 待命
 	private final int STANDBY = 1;// 准备
 	private int state = STANDBY;
 	private Button btn_ready;
-	private int cool_num = 3;
+	private float cool_num = 3.0f;
 	private int step_cool = 1;
-	private int energy_num = 34;
+	private int energy_num;
 	private int step_energy = 1;
 	private TextView tv_cooling;
 	private ImageView iv_num1;
@@ -59,6 +61,8 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 	private TextView tv_coolant;
 	private ImageView iv_charge;//电池电量展示
 	private BatteryReceiver receiver;
+	private int maxEnergyNum;//能量密度最大值
+	private int minEnergyNum;//能量密度最小值
 	/**
 	 * 广播接收电池电量变量
 	 * @author tianliang.zhou
@@ -99,6 +103,7 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 		iv_snow = (ImageView) findViewById(R.id.iv_snow);
 		tv_counter = (TextView) findViewById(R.id.tv_counter);
 		iv_fuction = (ImageView) findViewById(R.id.iv_function);
+		iv_hrpc = (ImageView) findViewById(R.id.iv_hrpc);
 		iv_mode = (ImageView) findViewById(R.id.iv_mode);
 		btn_ready = (Button) findViewById(R.id.btn_ready);
 		tv_cooling= (TextView) findViewById(R.id.tv_cooling);
@@ -113,11 +118,7 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 	}
 
 	@Override
-	protected void setAttribute() {			
-		tv_current_function.setText(String.format(getString(R.string.current_function), "HR"));
-		tv_current_density.setText(String.format(getString(R.string.current_density), "20~40"));
-		tv_current_pulswidth.setText(String.format(getString(R.string.current_pluswidth), "100"));
-		tv_current_frequency.setText(String.format(getString(R.string.currrent_frequency), "2"));
+	protected void setAttribute() {				
 		tv_coolant.setText(Html.fromHtml(String.format(getString(R.string.coolant), "24.7")));
 		btn_cooling.setOnLongClickListener(new View.OnLongClickListener() {
 			
@@ -131,8 +132,7 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 				setSelectedState();
 				return false;
 			}
-		});
-		setEnergyPic();
+		});		
 		registerReceiver(receiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 		
 	}
@@ -142,6 +142,7 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 		functionResIds = getResources().getIntArray(R.array.functionResArray);
 		modeResIds = getResources().getIntArray(R.array.modeResArray);
 		numResIds = getResources().getIntArray(R.array.numResArray);
+		fuctionMotionResIds = getResources().getIntArray(R.array.functionMotionResArray);
 		receiver = new BatteryReceiver();
 	}
 
@@ -153,12 +154,20 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
-		case R.id.btn_function://功能按键	
-			curSelectedIndex = INDEX_FUNCTION;	
+		case R.id.btn_function://功能按键
+			if(curSelectedIndex != INDEX_FUNCTION){
+				curSelectedIndex = INDEX_FUNCTION;
+			}else{
+				curSelectedIndex = INDEX_NONE;
+			}				
 			setSelectedState();
 			break;
 		case R.id.btn_mode://模式按键
-			curSelectedIndex = INDEX_MODE;
+			if(curSelectedIndex != INDEX_MODE){
+				curSelectedIndex = INDEX_MODE;
+			}else{
+				curSelectedIndex = INDEX_NONE;
+			}			
 			setSelectedState();
 			break;
 		case R.id.btn_cooling://cool按钮
@@ -168,7 +177,6 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 			}else{
 				iv_snow.setVisibility(View.INVISIBLE);
 			}
-			setSelectedState();
 			break;
 		case R.id.btn_counter://counter按钮,清零
 			tv_counter.setText("0");
@@ -182,8 +190,12 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 		case R.id.btn_reduce://减按钮
 			handReduceClick();
 			break;
-		case R.id.btn_energy://energy按钮	
-			curSelectedIndex = INDEX_ENERGY;
+		case R.id.btn_energy://energy按钮
+			if(curSelectedIndex != INDEX_ENERGY){
+				curSelectedIndex = INDEX_ENERGY;
+			}else{
+				curSelectedIndex = INDEX_NONE;
+			}			
 			setSelectedState();
 			break;
 		case R.id.btn_tool://tool按钮
@@ -211,18 +223,23 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 		switch (curSelectedIndex) {
 		case INDEX_FUNCTION:
 			functionResIndex++;
-			iv_fuction.setImageResource(functionResIds[functionResIndex%5]);
+			setFuction();
 			break;
 		case INDEX_MODE:
 			modeResIndex++;
-			iv_mode.setImageResource(modeResIds[modeResIndex%2]);
+			setMode();
 			break;
 		case INDEX_COOLING:	
 			cool_num += step_cool;
 			tv_cooling.setText(String.format(getString(R.string.temperature_num), String.valueOf(cool_num)));
 			break;
 		case INDEX_ENERGY:
-			energy_num += step_energy;	
+			if(functionResIndex == -1){//没有选择功能模式，加减能量密度无意义
+				return; 
+			}
+			if((energy_num + step_energy) <= maxEnergyNum){//不能超过最大能量密度
+				energy_num += step_energy;
+			}				
 			setEnergyPic();
 			break;
 		default:
@@ -239,13 +256,13 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 			if(functionResIndex > 0){
 				functionResIndex--;
 			}			
-			iv_fuction.setImageResource(functionResIds[functionResIndex%5]);
+			setFuction();
 			break;
 		case INDEX_MODE:
 			if(modeResIndex > 0){
 				modeResIndex--;
 			}			
-			iv_mode.setImageResource(modeResIds[modeResIndex%5]);
+			setMode();
 			break;
 		case INDEX_COOLING:	
 			if(cool_num >= step_cool){
@@ -253,8 +270,11 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 			}
 			tv_cooling.setText(String.format(getString(R.string.temperature_num), String.valueOf(cool_num)));
 			break;
-		case INDEX_ENERGY:	
-			if(energy_num >= step_energy){
+		case INDEX_ENERGY:
+			if(functionResIndex == -1){//没有选择功能模式，加减能量密度无意义
+				return; 
+			}
+			if((energy_num - step_energy) >= minEnergyNum){//不能小于最小能量密度
 				energy_num -= step_energy;
 			}
 			setEnergyPic();
@@ -265,7 +285,7 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 	}
 	
 	/**
-	 * 设置energy图片
+	 * 设置能量密度
 	 */
 	private void setEnergyPic(){
 		String num = String.valueOf(energy_num);
@@ -318,6 +338,83 @@ public class HairRemovalActivity extends BaseActivity implements OnClickListener
 			btn_mode.setSelected(false);
 			btn_energy.setSelected(true);
 			btn_cooling.setSelected(false);
+			break;
+		default:
+			break;
+		}
+	}
+		
+	/**
+	 * 设置功能资源
+	 */
+	private void setFuction(){
+		int index = functionResIndex%5;
+		iv_fuction.setImageResource(functionResIds[index]);
+		iv_hrpc.setImageResource(fuctionMotionResIds[functionResIndex%5]);
+		switch (index) {
+		case 0:	//AC	
+			tv_current_function.setText(String.format(getString(R.string.current_function), "AC"));
+			tv_current_density.setText(String.format(getString(R.string.current_density), "15~25"));
+			tv_current_pulswidth.setText(String.format(getString(R.string.current_pluswidth), "80"));
+			maxEnergyNum = 25;
+			minEnergyNum = 15;
+			energy_num = 15;
+			setEnergyPic();
+			break;
+		case 1://HR
+			tv_current_function.setText(String.format(getString(R.string.current_function), "HR"));
+			tv_current_density.setText(String.format(getString(R.string.current_density), "20~40"));
+			tv_current_pulswidth.setText(String.format(getString(R.string.current_pluswidth), "100"));
+			maxEnergyNum = 40;
+			minEnergyNum = 20;
+			energy_num = 20;
+			setEnergyPic();
+			break;
+		case 2://HRP
+			tv_current_function.setText(String.format(getString(R.string.current_function), "HR+"));
+			tv_current_density.setText(String.format(getString(R.string.current_density), "20~60"));
+			tv_current_pulswidth.setText(String.format(getString(R.string.current_pluswidth), "150"));
+			maxEnergyNum = 60;
+			minEnergyNum = 20;
+			energy_num = 20;
+			setEnergyPic();
+			break;
+		case 3://SR
+			tv_current_function.setText(String.format(getString(R.string.current_function), "SR"));
+			tv_current_density.setText(String.format(getString(R.string.current_density), "20~60"));
+			tv_current_pulswidth.setText(String.format(getString(R.string.current_pluswidth), "300"));
+			maxEnergyNum = 60;
+			minEnergyNum = 20;
+			energy_num = 20;
+			setEnergyPic();
+			break;
+		case 4://SHR
+			tv_current_function.setText(String.format(getString(R.string.current_function), "SHR"));
+			tv_current_density.setText(String.format(getString(R.string.current_density), "10~20"));
+			tv_current_pulswidth.setText(String.format(getString(R.string.current_pluswidth), "100"));
+			maxEnergyNum = 20;
+			minEnergyNum = 10;
+			energy_num = 10;
+			setEnergyPic();
+			break;
+		default:
+			break;
+		}
+	}
+	
+	/**
+	 * 设置模式
+	 */
+	private void setMode(){
+		int index = modeResIndex%2;
+		iv_mode.setImageResource(modeResIds[index]);
+		switch (index) {
+		case 0:
+			tv_current_frequency.setVisibility(View.INVISIBLE);
+			break;
+		case 1:
+			tv_current_frequency.setVisibility(View.VISIBLE);
+			tv_current_frequency.setText(String.format(getString(R.string.currrent_frequency), "2"));
 			break;
 		default:
 			break;

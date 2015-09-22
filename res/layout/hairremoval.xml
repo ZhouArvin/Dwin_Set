@@ -83,7 +83,6 @@
             android:layout_marginLeft="20dp"
             android:layout_row="1"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/hr"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:background="@drawable/kuang_bg" />
@@ -92,7 +91,6 @@
             android:id="@+id/iv_hrpc"
             android:layout_rowSpan="3"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/hrpic" 
             android:paddingTop="1dp"
             android:layout_marginLeft="50dp"
             android:background="@drawable/kuang_bg"/>
@@ -124,7 +122,6 @@
             android:id="@+id/iv_mode"
             android:layout_marginLeft="20dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/repeat_mode" 
             android:background="@drawable/kuang_bg"/>
 
         <Space
@@ -151,7 +148,7 @@
         <TextView
             android:id="@+id/tv_cooling"
             android:layout_gravity="center"
-            android:text="℃2.2"
+            android:text="℃"
             android:textSize="50sp"
             android:gravity="center"
             android:layout_marginLeft="20dp"
@@ -220,7 +217,6 @@
         <TextView
             android:id="@+id/tv_counter"
             android:layout_gravity="center"
-            android:text="1234"
             android:gravity="center"
             android:textColor="@android:color/black"
             android:layout_marginLeft="20dp"

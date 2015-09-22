@@ -21,6 +21,14 @@
         <item>@drawable/shr</item>        
     </integer-array>
     
+    <integer-array name="functionMotionResArray">
+        <item>@drawable/acpic</item>
+        <item>@drawable/hrpic</item>
+        <item>@drawable/hrppic</item>
+        <item>@drawable/srpic</item>
+        <item>@drawable/shrpic</item>        
+    </integer-array>
+    
     <integer-array name="modeResArray">
         <item>@drawable/single_mode</item>
         <item>@drawable/repeat_mode</item>            
